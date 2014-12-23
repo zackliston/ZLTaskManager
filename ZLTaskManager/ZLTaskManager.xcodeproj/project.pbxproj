@@ -7,123 +7,318 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13D8B37D1A49F79500E28CBC /* ZLTaskManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 13D8B37C1A49F79500E28CBC /* ZLTaskManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		13D8B3831A49F79500E28CBC /* ZLTaskManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D8B3771A49F79500E28CBC /* ZLTaskManager.framework */; };
-		13D8B38A1A49F79500E28CBC /* ZLTaskManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B3891A49F79500E28CBC /* ZLTaskManagerTests.m */; };
+		13D8B3F91A4A188400E28CBC /* ZLTaskManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 13D8B3F81A4A188400E28CBC /* ZLTaskManager.h */; };
+		13D8B3FB1A4A188400E28CBC /* ZLTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B3FA1A4A188400E28CBC /* ZLTaskManager.m */; };
+		13D8B4121A4A18DB00E28CBC /* ZLTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4111A4A18DB00E28CBC /* ZLTask.m */; };
+		13D8B4131A4A18DB00E28CBC /* ZLTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4111A4A18DB00E28CBC /* ZLTask.m */; };
+		13D8B41B1A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4181A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.m */; };
+		13D8B41C1A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4181A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.m */; };
+		13D8B41D1A4A18FB00E28CBC /* ZLWorkItemDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B41A1A4A18FB00E28CBC /* ZLWorkItemDatabase.m */; };
+		13D8B41E1A4A18FB00E28CBC /* ZLWorkItemDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B41A1A4A18FB00E28CBC /* ZLWorkItemDatabase.m */; };
+		13D8B4231A4A191E00E28CBC /* ZLInternalWorkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4221A4A191E00E28CBC /* ZLInternalWorkItem.m */; };
+		13D8B4241A4A191E00E28CBC /* ZLInternalWorkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4221A4A191E00E28CBC /* ZLInternalWorkItem.m */; };
+		13D8B4281A4A193200E28CBC /* ZLTaskWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4271A4A193200E28CBC /* ZLTaskWorker.m */; };
+		13D8B4291A4A193200E28CBC /* ZLTaskWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4271A4A193200E28CBC /* ZLTaskWorker.m */; };
+		13D8B4371A4A196900E28CBC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B42D1A4A196900E28CBC /* FMDatabase.m */; };
+		13D8B4381A4A196900E28CBC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B42D1A4A196900E28CBC /* FMDatabase.m */; };
+		13D8B4391A4A196900E28CBC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B42F1A4A196900E28CBC /* FMDatabaseAdditions.m */; };
+		13D8B43A1A4A196900E28CBC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B42F1A4A196900E28CBC /* FMDatabaseAdditions.m */; };
+		13D8B43B1A4A196900E28CBC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4311A4A196900E28CBC /* FMDatabasePool.m */; };
+		13D8B43C1A4A196900E28CBC /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4311A4A196900E28CBC /* FMDatabasePool.m */; };
+		13D8B43D1A4A196900E28CBC /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4331A4A196900E28CBC /* FMDatabaseQueue.m */; };
+		13D8B43E1A4A196900E28CBC /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4331A4A196900E28CBC /* FMDatabaseQueue.m */; };
+		13D8B43F1A4A196900E28CBC /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4361A4A196900E28CBC /* FMResultSet.m */; };
+		13D8B4401A4A196900E28CBC /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4361A4A196900E28CBC /* FMResultSet.m */; };
+		13D8B44B1A4A198900E28CBC /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D8B4491A4A198900E28CBC /* libOCMock.a */; };
+		13D8B44F1A4A199D00E28CBC /* ZLTestConcurrnetTaskWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B44E1A4A199D00E28CBC /* ZLTestConcurrnetTaskWorker.m */; };
+		13D8B4551A4A19AA00E28CBC /* ZLTaskManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4501A4A19AA00E28CBC /* ZLTaskManagerTests.m */; };
+		13D8B4561A4A19AA00E28CBC /* TestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4511A4A19AA00E28CBC /* TestTask.m */; };
+		13D8B4571A4A19AA00E28CBC /* TestInternalWorkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4521A4A19AA00E28CBC /* TestInternalWorkItem.m */; };
+		13D8B4581A4A19AA00E28CBC /* ZLTestWorkItemDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4531A4A19AA00E28CBC /* ZLTestWorkItemDatabase.m */; };
+		13D8B4591A4A19AA00E28CBC /* ZLTestTaskWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4541A4A19AA00E28CBC /* ZLTestTaskWorker.m */; };
+		13D8B45C1A4A1A0F00E28CBC /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D8B45A1A4A1A0700E28CBC /* libsqlite3.0.dylib */; };
+		13D8B4611A4A1E4800E28CBC /* ZLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4601A4A1E4800E28CBC /* ZLManager.m */; };
+		13D8B4621A4A1E4800E28CBC /* ZLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4601A4A1E4800E28CBC /* ZLManager.m */; };
+		13D8B4631A4A212900E28CBC /* ZLTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B3FA1A4A188400E28CBC /* ZLTaskManager.m */; };
+		13D8B4651A4A21C600E28CBC /* ZLTestManagerBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4641A4A21C600E28CBC /* ZLTestManagerBaseClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		13D8B3841A49F79500E28CBC /* PBXContainerItemProxy */ = {
+		13D8B4021A4A188400E28CBC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 13D8B36E1A49F79500E28CBC /* Project object */;
+			containerPortal = 13D8B3ED1A4A188400E28CBC /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 13D8B3761A49F79500E28CBC;
+			remoteGlobalIDString = 13D8B3F41A4A188400E28CBC;
 			remoteInfo = ZLTaskManager;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		13D8B3F31A4A188400E28CBC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				13D8B3F91A4A188400E28CBC /* ZLTaskManager.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		13D8B3771A49F79500E28CBC /* ZLTaskManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZLTaskManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		13D8B37B1A49F79500E28CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13D8B37C1A49F79500E28CBC /* ZLTaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLTaskManager.h; sourceTree = "<group>"; };
-		13D8B3821A49F79500E28CBC /* ZLTaskManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZLTaskManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		13D8B3881A49F79500E28CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13D8B3891A49F79500E28CBC /* ZLTaskManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLTaskManagerTests.m; sourceTree = "<group>"; };
+		13D8B3F51A4A188400E28CBC /* libZLTaskManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZLTaskManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		13D8B3F81A4A188400E28CBC /* ZLTaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLTaskManager.h; sourceTree = "<group>"; };
+		13D8B3FA1A4A188400E28CBC /* ZLTaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLTaskManager.m; sourceTree = "<group>"; };
+		13D8B4001A4A188400E28CBC /* ZLTaskManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZLTaskManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		13D8B4061A4A188400E28CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13D8B4101A4A18DB00E28CBC /* ZLTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLTask.h; sourceTree = "<group>"; };
+		13D8B4111A4A18DB00E28CBC /* ZLTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTask.m; sourceTree = "<group>"; };
+		13D8B4151A4A18EC00E28CBC /* ZLTaskFinishedProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLTaskFinishedProtocol.h; sourceTree = "<group>"; };
+		13D8B4171A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLWorkItemDatabaseConstants.h; sourceTree = "<group>"; };
+		13D8B4181A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLWorkItemDatabaseConstants.m; sourceTree = "<group>"; };
+		13D8B4191A4A18FB00E28CBC /* ZLWorkItemDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLWorkItemDatabase.h; sourceTree = "<group>"; };
+		13D8B41A1A4A18FB00E28CBC /* ZLWorkItemDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLWorkItemDatabase.m; sourceTree = "<group>"; };
+		13D8B4211A4A191E00E28CBC /* ZLInternalWorkItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLInternalWorkItem.h; sourceTree = "<group>"; };
+		13D8B4221A4A191E00E28CBC /* ZLInternalWorkItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLInternalWorkItem.m; sourceTree = "<group>"; };
+		13D8B4261A4A193200E28CBC /* ZLTaskWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLTaskWorker.h; sourceTree = "<group>"; };
+		13D8B4271A4A193200E28CBC /* ZLTaskWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTaskWorker.m; sourceTree = "<group>"; };
+		13D8B42C1A4A196900E28CBC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		13D8B42D1A4A196900E28CBC /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		13D8B42E1A4A196900E28CBC /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		13D8B42F1A4A196900E28CBC /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		13D8B4301A4A196900E28CBC /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		13D8B4311A4A196900E28CBC /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		13D8B4321A4A196900E28CBC /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		13D8B4331A4A196900E28CBC /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		13D8B4341A4A196900E28CBC /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		13D8B4351A4A196900E28CBC /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		13D8B4361A4A196900E28CBC /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		13D8B4421A4A198900E28CBC /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		13D8B4431A4A198900E28CBC /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		13D8B4441A4A198900E28CBC /* OCMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMLocation.h; sourceTree = "<group>"; };
+		13D8B4451A4A198900E28CBC /* OCMMacroState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMMacroState.h; sourceTree = "<group>"; };
+		13D8B4461A4A198900E28CBC /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		13D8B4471A4A198900E28CBC /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		13D8B4481A4A198900E28CBC /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
+		13D8B4491A4A198900E28CBC /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		13D8B44D1A4A199D00E28CBC /* ZLTestConcurrnetTaskWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLTestConcurrnetTaskWorker.h; sourceTree = "<group>"; };
+		13D8B44E1A4A199D00E28CBC /* ZLTestConcurrnetTaskWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTestConcurrnetTaskWorker.m; sourceTree = "<group>"; };
+		13D8B4501A4A19AA00E28CBC /* ZLTaskManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTaskManagerTests.m; sourceTree = "<group>"; };
+		13D8B4511A4A19AA00E28CBC /* TestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTask.m; sourceTree = "<group>"; };
+		13D8B4521A4A19AA00E28CBC /* TestInternalWorkItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInternalWorkItem.m; sourceTree = "<group>"; };
+		13D8B4531A4A19AA00E28CBC /* ZLTestWorkItemDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTestWorkItemDatabase.m; sourceTree = "<group>"; };
+		13D8B4541A4A19AA00E28CBC /* ZLTestTaskWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTestTaskWorker.m; sourceTree = "<group>"; };
+		13D8B45A1A4A1A0700E28CBC /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		13D8B45D1A4A1A3100E28CBC /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		13D8B45F1A4A1E4800E28CBC /* ZLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLManager.h; sourceTree = "<group>"; };
+		13D8B4601A4A1E4800E28CBC /* ZLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLManager.m; sourceTree = "<group>"; };
+		13D8B4641A4A21C600E28CBC /* ZLTestManagerBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTestManagerBaseClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		13D8B3731A49F79500E28CBC /* Frameworks */ = {
+		13D8B3F21A4A188400E28CBC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		13D8B37F1A49F79500E28CBC /* Frameworks */ = {
+		13D8B3FD1A4A188400E28CBC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13D8B3831A49F79500E28CBC /* ZLTaskManager.framework in Frameworks */,
+				13D8B45C1A4A1A0F00E28CBC /* libsqlite3.0.dylib in Frameworks */,
+				13D8B44B1A4A198900E28CBC /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13D8B36D1A49F79500E28CBC = {
+		13D8B3EC1A4A188400E28CBC = {
 			isa = PBXGroup;
 			children = (
-				13D8B3791A49F79500E28CBC /* ZLTaskManager */,
-				13D8B3861A49F79500E28CBC /* ZLTaskManagerTests */,
-				13D8B3781A49F79500E28CBC /* Products */,
+				13D8B45A1A4A1A0700E28CBC /* libsqlite3.0.dylib */,
+				13D8B3F71A4A188400E28CBC /* ZLTaskManager */,
+				13D8B4041A4A188400E28CBC /* ZLTaskManagerTests */,
+				13D8B3F61A4A188400E28CBC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		13D8B3781A49F79500E28CBC /* Products */ = {
+		13D8B3F61A4A188400E28CBC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13D8B3771A49F79500E28CBC /* ZLTaskManager.framework */,
-				13D8B3821A49F79500E28CBC /* ZLTaskManagerTests.xctest */,
+				13D8B3F51A4A188400E28CBC /* libZLTaskManager.a */,
+				13D8B4001A4A188400E28CBC /* ZLTaskManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13D8B3791A49F79500E28CBC /* ZLTaskManager */ = {
+		13D8B3F71A4A188400E28CBC /* ZLTaskManager */ = {
 			isa = PBXGroup;
 			children = (
-				13D8B37C1A49F79500E28CBC /* ZLTaskManager.h */,
-				13D8B37A1A49F79500E28CBC /* Supporting Files */,
+				13D8B42A1A4A194800E28CBC /* Supporting Files */,
+				13D8B45E1A4A1E3600E28CBC /* Manager */,
+				13D8B4141A4A18E300E28CBC /* Protocols */,
+				13D8B4251A4A192800E28CBC /* TaskWorker */,
+				13D8B4201A4A190E00E28CBC /* Internal Work Item */,
+				13D8B4161A4A18EF00E28CBC /* WorkItem Database */,
+				13D8B40F1A4A18B900E28CBC /* Task */,
+				13D8B3F81A4A188400E28CBC /* ZLTaskManager.h */,
+				13D8B3FA1A4A188400E28CBC /* ZLTaskManager.m */,
 			);
 			path = ZLTaskManager;
 			sourceTree = "<group>";
 		};
-		13D8B37A1A49F79500E28CBC /* Supporting Files */ = {
+		13D8B4041A4A188400E28CBC /* ZLTaskManagerTests */ = {
 			isa = PBXGroup;
 			children = (
-				13D8B37B1A49F79500E28CBC /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		13D8B3861A49F79500E28CBC /* ZLTaskManagerTests */ = {
-			isa = PBXGroup;
-			children = (
-				13D8B3891A49F79500E28CBC /* ZLTaskManagerTests.m */,
-				13D8B3871A49F79500E28CBC /* Supporting Files */,
+				13D8B4641A4A21C600E28CBC /* ZLTestManagerBaseClass.m */,
+				13D8B4501A4A19AA00E28CBC /* ZLTaskManagerTests.m */,
+				13D8B4511A4A19AA00E28CBC /* TestTask.m */,
+				13D8B4521A4A19AA00E28CBC /* TestInternalWorkItem.m */,
+				13D8B4531A4A19AA00E28CBC /* ZLTestWorkItemDatabase.m */,
+				13D8B4541A4A19AA00E28CBC /* ZLTestTaskWorker.m */,
+				13D8B4051A4A188400E28CBC /* Supporting Files */,
 			);
 			path = ZLTaskManagerTests;
 			sourceTree = "<group>";
 		};
-		13D8B3871A49F79500E28CBC /* Supporting Files */ = {
+		13D8B4051A4A188400E28CBC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				13D8B3881A49F79500E28CBC /* Info.plist */,
+				13D8B44D1A4A199D00E28CBC /* ZLTestConcurrnetTaskWorker.h */,
+				13D8B44E1A4A199D00E28CBC /* ZLTestConcurrnetTaskWorker.m */,
+				13D8B44C1A4A198E00E28CBC /* OCMock */,
+				13D8B4061A4A188400E28CBC /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		13D8B40F1A4A18B900E28CBC /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B4101A4A18DB00E28CBC /* ZLTask.h */,
+				13D8B4111A4A18DB00E28CBC /* ZLTask.m */,
+			);
+			name = Task;
+			sourceTree = "<group>";
+		};
+		13D8B4141A4A18E300E28CBC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B4151A4A18EC00E28CBC /* ZLTaskFinishedProtocol.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		13D8B4161A4A18EF00E28CBC /* WorkItem Database */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B41F1A4A18FF00E28CBC /* Constants */,
+				13D8B4191A4A18FB00E28CBC /* ZLWorkItemDatabase.h */,
+				13D8B41A1A4A18FB00E28CBC /* ZLWorkItemDatabase.m */,
+			);
+			name = "WorkItem Database";
+			sourceTree = "<group>";
+		};
+		13D8B41F1A4A18FF00E28CBC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B4171A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.h */,
+				13D8B4181A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		13D8B4201A4A190E00E28CBC /* Internal Work Item */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B4211A4A191E00E28CBC /* ZLInternalWorkItem.h */,
+				13D8B4221A4A191E00E28CBC /* ZLInternalWorkItem.m */,
+			);
+			name = "Internal Work Item";
+			sourceTree = "<group>";
+		};
+		13D8B4251A4A192800E28CBC /* TaskWorker */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B4261A4A193200E28CBC /* ZLTaskWorker.h */,
+				13D8B4271A4A193200E28CBC /* ZLTaskWorker.m */,
+			);
+			name = TaskWorker;
+			sourceTree = "<group>";
+		};
+		13D8B42A1A4A194800E28CBC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B42B1A4A195200E28CBC /* Third Party */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13D8B42B1A4A195200E28CBC /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B4411A4A196C00E28CBC /* FMDB */,
+			);
+			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		13D8B4411A4A196C00E28CBC /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B42C1A4A196900E28CBC /* FMDatabase.h */,
+				13D8B42D1A4A196900E28CBC /* FMDatabase.m */,
+				13D8B42E1A4A196900E28CBC /* FMDatabaseAdditions.h */,
+				13D8B42F1A4A196900E28CBC /* FMDatabaseAdditions.m */,
+				13D8B4301A4A196900E28CBC /* FMDatabasePool.h */,
+				13D8B4311A4A196900E28CBC /* FMDatabasePool.m */,
+				13D8B4321A4A196900E28CBC /* FMDatabaseQueue.h */,
+				13D8B4331A4A196900E28CBC /* FMDatabaseQueue.m */,
+				13D8B4341A4A196900E28CBC /* FMDB.h */,
+				13D8B4351A4A196900E28CBC /* FMResultSet.h */,
+				13D8B4361A4A196900E28CBC /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		13D8B44C1A4A198E00E28CBC /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B45D1A4A1A3100E28CBC /* NSNotificationCenter+OCMAdditions.h */,
+				13D8B4421A4A198900E28CBC /* OCMArg.h */,
+				13D8B4431A4A198900E28CBC /* OCMConstraint.h */,
+				13D8B4441A4A198900E28CBC /* OCMLocation.h */,
+				13D8B4451A4A198900E28CBC /* OCMMacroState.h */,
+				13D8B4461A4A198900E28CBC /* OCMock.h */,
+				13D8B4471A4A198900E28CBC /* OCMockObject.h */,
+				13D8B4481A4A198900E28CBC /* OCMockRecorder.h */,
+				13D8B4491A4A198900E28CBC /* libOCMock.a */,
+			);
+			name = OCMock;
+			sourceTree = "<group>";
+		};
+		13D8B45E1A4A1E3600E28CBC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B45F1A4A1E4800E28CBC /* ZLManager.h */,
+				13D8B4601A4A1E4800E28CBC /* ZLManager.m */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		13D8B3741A49F79500E28CBC /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				13D8B37D1A49F79500E28CBC /* ZLTaskManager.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		13D8B3761A49F79500E28CBC /* ZLTaskManager */ = {
+		13D8B3F41A4A188400E28CBC /* ZLTaskManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13D8B38D1A49F79500E28CBC /* Build configuration list for PBXNativeTarget "ZLTaskManager" */;
+			buildConfigurationList = 13D8B4091A4A188400E28CBC /* Build configuration list for PBXNativeTarget "ZLTaskManager" */;
 			buildPhases = (
-				13D8B3721A49F79500E28CBC /* Sources */,
-				13D8B3731A49F79500E28CBC /* Frameworks */,
-				13D8B3741A49F79500E28CBC /* Headers */,
-				13D8B3751A49F79500E28CBC /* Resources */,
+				13D8B3F11A4A188400E28CBC /* Sources */,
+				13D8B3F21A4A188400E28CBC /* Frameworks */,
+				13D8B3F31A4A188400E28CBC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -131,71 +326,65 @@
 			);
 			name = ZLTaskManager;
 			productName = ZLTaskManager;
-			productReference = 13D8B3771A49F79500E28CBC /* ZLTaskManager.framework */;
-			productType = "com.apple.product-type.framework";
+			productReference = 13D8B3F51A4A188400E28CBC /* libZLTaskManager.a */;
+			productType = "com.apple.product-type.library.static";
 		};
-		13D8B3811A49F79500E28CBC /* ZLTaskManagerTests */ = {
+		13D8B3FF1A4A188400E28CBC /* ZLTaskManagerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13D8B3901A49F79500E28CBC /* Build configuration list for PBXNativeTarget "ZLTaskManagerTests" */;
+			buildConfigurationList = 13D8B40C1A4A188400E28CBC /* Build configuration list for PBXNativeTarget "ZLTaskManagerTests" */;
 			buildPhases = (
-				13D8B37E1A49F79500E28CBC /* Sources */,
-				13D8B37F1A49F79500E28CBC /* Frameworks */,
-				13D8B3801A49F79500E28CBC /* Resources */,
+				13D8B3FC1A4A188400E28CBC /* Sources */,
+				13D8B3FD1A4A188400E28CBC /* Frameworks */,
+				13D8B3FE1A4A188400E28CBC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				13D8B3851A49F79500E28CBC /* PBXTargetDependency */,
+				13D8B4031A4A188400E28CBC /* PBXTargetDependency */,
 			);
 			name = ZLTaskManagerTests;
 			productName = ZLTaskManagerTests;
-			productReference = 13D8B3821A49F79500E28CBC /* ZLTaskManagerTests.xctest */;
+			productReference = 13D8B4001A4A188400E28CBC /* ZLTaskManagerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		13D8B36E1A49F79500E28CBC /* Project object */ = {
+		13D8B3ED1A4A188400E28CBC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ZL;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Zack Liston";
 				TargetAttributes = {
-					13D8B3761A49F79500E28CBC = {
+					13D8B3F41A4A188400E28CBC = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
-					13D8B3811A49F79500E28CBC = {
+					13D8B3FF1A4A188400E28CBC = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
 			};
-			buildConfigurationList = 13D8B3711A49F79500E28CBC /* Build configuration list for PBXProject "ZLTaskManager" */;
+			buildConfigurationList = 13D8B3F01A4A188400E28CBC /* Build configuration list for PBXProject "ZLTaskManager" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 13D8B36D1A49F79500E28CBC;
-			productRefGroup = 13D8B3781A49F79500E28CBC /* Products */;
+			mainGroup = 13D8B3EC1A4A188400E28CBC;
+			productRefGroup = 13D8B3F61A4A188400E28CBC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13D8B3761A49F79500E28CBC /* ZLTaskManager */,
-				13D8B3811A49F79500E28CBC /* ZLTaskManagerTests */,
+				13D8B3F41A4A188400E28CBC /* ZLTaskManager */,
+				13D8B3FF1A4A188400E28CBC /* ZLTaskManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		13D8B3751A49F79500E28CBC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		13D8B3801A49F79500E28CBC /* Resources */ = {
+		13D8B3FE1A4A188400E28CBC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -205,33 +394,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		13D8B3721A49F79500E28CBC /* Sources */ = {
+		13D8B3F11A4A188400E28CBC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13D8B4231A4A191E00E28CBC /* ZLInternalWorkItem.m in Sources */,
+				13D8B41D1A4A18FB00E28CBC /* ZLWorkItemDatabase.m in Sources */,
+				13D8B4281A4A193200E28CBC /* ZLTaskWorker.m in Sources */,
+				13D8B4611A4A1E4800E28CBC /* ZLManager.m in Sources */,
+				13D8B4371A4A196900E28CBC /* FMDatabase.m in Sources */,
+				13D8B43B1A4A196900E28CBC /* FMDatabasePool.m in Sources */,
+				13D8B43D1A4A196900E28CBC /* FMDatabaseQueue.m in Sources */,
+				13D8B41B1A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.m in Sources */,
+				13D8B4121A4A18DB00E28CBC /* ZLTask.m in Sources */,
+				13D8B43F1A4A196900E28CBC /* FMResultSet.m in Sources */,
+				13D8B3FB1A4A188400E28CBC /* ZLTaskManager.m in Sources */,
+				13D8B4391A4A196900E28CBC /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		13D8B37E1A49F79500E28CBC /* Sources */ = {
+		13D8B3FC1A4A188400E28CBC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13D8B38A1A49F79500E28CBC /* ZLTaskManagerTests.m in Sources */,
+				13D8B4591A4A19AA00E28CBC /* ZLTestTaskWorker.m in Sources */,
+				13D8B4241A4A191E00E28CBC /* ZLInternalWorkItem.m in Sources */,
+				13D8B4631A4A212900E28CBC /* ZLTaskManager.m in Sources */,
+				13D8B41C1A4A18FB00E28CBC /* ZLWorkItemDatabaseConstants.m in Sources */,
+				13D8B4551A4A19AA00E28CBC /* ZLTaskManagerTests.m in Sources */,
+				13D8B4561A4A19AA00E28CBC /* TestTask.m in Sources */,
+				13D8B4131A4A18DB00E28CBC /* ZLTask.m in Sources */,
+				13D8B4581A4A19AA00E28CBC /* ZLTestWorkItemDatabase.m in Sources */,
+				13D8B44F1A4A199D00E28CBC /* ZLTestConcurrnetTaskWorker.m in Sources */,
+				13D8B4571A4A19AA00E28CBC /* TestInternalWorkItem.m in Sources */,
+				13D8B4381A4A196900E28CBC /* FMDatabase.m in Sources */,
+				13D8B4401A4A196900E28CBC /* FMResultSet.m in Sources */,
+				13D8B4291A4A193200E28CBC /* ZLTaskWorker.m in Sources */,
+				13D8B43C1A4A196900E28CBC /* FMDatabasePool.m in Sources */,
+				13D8B43A1A4A196900E28CBC /* FMDatabaseAdditions.m in Sources */,
+				13D8B4651A4A21C600E28CBC /* ZLTestManagerBaseClass.m in Sources */,
+				13D8B41E1A4A18FB00E28CBC /* ZLWorkItemDatabase.m in Sources */,
+				13D8B4621A4A1E4800E28CBC /* ZLManager.m in Sources */,
+				13D8B43E1A4A196900E28CBC /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		13D8B3851A49F79500E28CBC /* PBXTargetDependency */ = {
+		13D8B4031A4A188400E28CBC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13D8B3761A49F79500E28CBC /* ZLTaskManager */;
-			targetProxy = 13D8B3841A49F79500E28CBC /* PBXContainerItemProxy */;
+			target = 13D8B3F41A4A188400E28CBC /* ZLTaskManager */;
+			targetProxy = 13D8B4021A4A188400E28CBC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		13D8B38B1A49F79500E28CBC /* Debug */ = {
+		13D8B4071A4A188400E28CBC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -248,9 +467,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -270,13 +487,10 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		13D8B38C1A49F79500E28CBC /* Release */ = {
+		13D8B4081A4A188400E28CBC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -293,9 +507,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -308,44 +520,37 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		13D8B38E1A49F79500E28CBC /* Debug */ = {
+		13D8B40A1A4A188400E28CBC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ZLTaskManager/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZLTaskManagerTests",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		13D8B38F1A49F79500E28CBC /* Release */ = {
+		13D8B40B1A4A188400E28CBC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ZLTaskManager/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZLTaskManagerTests",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		13D8B3911A49F79500E28CBC /* Debug */ = {
+		13D8B40D1A4A188400E28CBC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
@@ -355,14 +560,25 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"TEST=1",
 				);
 				INFOPLIST_FILE = ZLTaskManagerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZLTaskManagerTests",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		13D8B3921A49F79500E28CBC /* Release */ = {
+		13D8B40E1A4A188400E28CBC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
@@ -371,6 +587,16 @@
 				);
 				INFOPLIST_FILE = ZLTaskManagerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZLTaskManagerTests",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -378,32 +604,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13D8B3711A49F79500E28CBC /* Build configuration list for PBXProject "ZLTaskManager" */ = {
+		13D8B3F01A4A188400E28CBC /* Build configuration list for PBXProject "ZLTaskManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13D8B38B1A49F79500E28CBC /* Debug */,
-				13D8B38C1A49F79500E28CBC /* Release */,
+				13D8B4071A4A188400E28CBC /* Debug */,
+				13D8B4081A4A188400E28CBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13D8B38D1A49F79500E28CBC /* Build configuration list for PBXNativeTarget "ZLTaskManager" */ = {
+		13D8B4091A4A188400E28CBC /* Build configuration list for PBXNativeTarget "ZLTaskManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13D8B38E1A49F79500E28CBC /* Debug */,
-				13D8B38F1A49F79500E28CBC /* Release */,
+				13D8B40A1A4A188400E28CBC /* Debug */,
+				13D8B40B1A4A188400E28CBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		13D8B3901A49F79500E28CBC /* Build configuration list for PBXNativeTarget "ZLTaskManagerTests" */ = {
+		13D8B40C1A4A188400E28CBC /* Build configuration list for PBXNativeTarget "ZLTaskManagerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13D8B3911A49F79500E28CBC /* Debug */,
-				13D8B3921A49F79500E28CBC /* Release */,
+				13D8B40D1A4A188400E28CBC /* Debug */,
+				13D8B40E1A4A188400E28CBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 13D8B36E1A49F79500E28CBC /* Project object */;
+	rootObject = 13D8B3ED1A4A188400E28CBC /* Project object */;
 }
