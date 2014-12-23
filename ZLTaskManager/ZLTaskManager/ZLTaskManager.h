@@ -8,19 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ZLTaskFinishedProtocol.h"
-//#import "ZLTask.h"
+#import "ZLTask.h"
 
 @class ZLInternalWorkItem;
 @class ZLManager;
-@class ZLTask;
-
-/**
- //! Project version number for ZLTaskManager.
- FOUNDATION_EXPORT double ZLTaskManagerVersionNumber;
- 
- //! Project version string for ZLTaskManager.
- FOUNDATION_EXPORT const unsigned char ZLTaskManagerVersionString[];
- */
 
 // In this header, you should import all the public headers of your framework using statements like #import <ZLTaskManager/PublicHeader.h>
 

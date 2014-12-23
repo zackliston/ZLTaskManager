@@ -41,6 +41,8 @@
 		13D8B4621A4A1E4800E28CBC /* ZLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4601A4A1E4800E28CBC /* ZLManager.m */; };
 		13D8B4631A4A212900E28CBC /* ZLTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B3FA1A4A188400E28CBC /* ZLTaskManager.m */; };
 		13D8B4651A4A21C600E28CBC /* ZLTestManagerBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4641A4A21C600E28CBC /* ZLTestManagerBaseClass.m */; };
+		13D8B4691A4A289300E28CBC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4681A4A289300E28CBC /* Reachability.m */; };
+		13D8B46A1A4A289300E28CBC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4681A4A289300E28CBC /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		13D8B45F1A4A1E4800E28CBC /* ZLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLManager.h; sourceTree = "<group>"; };
 		13D8B4601A4A1E4800E28CBC /* ZLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLManager.m; sourceTree = "<group>"; };
 		13D8B4641A4A21C600E28CBC /* ZLTestManagerBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTestManagerBaseClass.m; sourceTree = "<group>"; };
+		13D8B4671A4A289300E28CBC /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		13D8B4681A4A289300E28CBC /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +265,7 @@
 		13D8B42B1A4A195200E28CBC /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
+				13D8B4661A4A288200E28CBC /* Reachability */,
 				13D8B4411A4A196C00E28CBC /* FMDB */,
 			);
 			name = "Third Party";
@@ -307,6 +312,15 @@
 				13D8B4601A4A1E4800E28CBC /* ZLManager.m */,
 			);
 			name = Manager;
+			sourceTree = "<group>";
+		};
+		13D8B4661A4A288200E28CBC /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				13D8B4671A4A289300E28CBC /* Reachability.h */,
+				13D8B4681A4A289300E28CBC /* Reachability.m */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13D8B4691A4A289300E28CBC /* Reachability.m in Sources */,
 				13D8B4231A4A191E00E28CBC /* ZLInternalWorkItem.m in Sources */,
 				13D8B41D1A4A18FB00E28CBC /* ZLWorkItemDatabase.m in Sources */,
 				13D8B4281A4A193200E28CBC /* ZLTaskWorker.m in Sources */,
@@ -431,6 +446,7 @@
 				13D8B4401A4A196900E28CBC /* FMResultSet.m in Sources */,
 				13D8B4291A4A193200E28CBC /* ZLTaskWorker.m in Sources */,
 				13D8B43C1A4A196900E28CBC /* FMDatabasePool.m in Sources */,
+				13D8B46A1A4A289300E28CBC /* Reachability.m in Sources */,
 				13D8B43A1A4A196900E28CBC /* FMDatabaseAdditions.m in Sources */,
 				13D8B4651A4A21C600E28CBC /* ZLTestManagerBaseClass.m in Sources */,
 				13D8B41E1A4A18FB00E28CBC /* ZLWorkItemDatabase.m in Sources */,

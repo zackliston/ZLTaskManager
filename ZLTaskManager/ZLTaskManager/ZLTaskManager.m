@@ -11,9 +11,8 @@
 #import "ZLInternalWorkItem.h"
 #import "ZLTaskWorker.h"
 #import "ZLManager.h"
-#import "ZLTask.h"
+#import "Reachability.h"
 
-//#import "ADNetworkManager.h"
 
 @interface ZLWorkItemDatabase (TestDestructor)
 
@@ -39,6 +38,8 @@ NSTimeInterval const kScheduleWorkTimeInterval = 5.0;
 
 @property (nonatomic, strong) dispatch_queue_t serialQueue;
 
+@property (nonatomic, strong) Reachability *reachability;
+
 @end
 
 static dispatch_once_t onceToken;
@@ -59,11 +60,16 @@ static dispatch_once_t onceToken;
         
         self.isRunning = YES;
         self.isWaitingForStopCompletion = NO;
+        self.reachability = [Reachability reachabilityForInternetConnection];
+        [self.reachability startNotifier];
         
-#ifndef TEST
-#warning fix
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkStatusChangeNotification:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
-#endif
+        __weak ZLTaskManager *weakSelf = self;
+        self.reachability.reachableBlock = ^(Reachability *reach) {
+            [weakSelf handleNetworkStatusChanged];
+        };
+        self.reachability.unreachableBlock = ^(Reachability *reach) {
+            [weakSelf handleNetworkStatusChanged];
+        };
     }
     return self;
 }
@@ -309,8 +315,7 @@ static dispatch_once_t onceToken;
         return NO;
     }
     
-#warning fix
-    BOOL isReachable = YES;//[[ADNetworkManager sharedInstance] reachabilityManager].isReachable;
+    BOOL isReachable = self.reachability.isReachable;
     ZLInternalWorkItem *nextWorkItem = nil;
     
     if (!isReachable) {
@@ -367,7 +372,7 @@ static dispatch_once_t onceToken;
     });
 }
 
-- (void)handleNetworkStatusChangeNotification:(NSNotification *)notification
+- (void)handleNetworkStatusChanged
 {
     dispatch_async(self.serialQueue, ^{
         [self scheduleMoreWork];

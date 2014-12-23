@@ -16,6 +16,7 @@
 #import "ZLTaskManager.h"
 #import "ZLTask.h"
 #import "ZLTestConcurrnetTaskWorker.h"
+#import "Reachability.h"
 
 NSString *const kDumpStateWorkItemDatabaseKeyTEST = @"workItemDatabaseState";
 NSString *const kActiveTaskQueueNameTEST = @"com.agilemd.taskWorker.activeTaskQueue";
@@ -33,6 +34,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
 @property (nonatomic, assign) BOOL isRunning;
 @property (nonatomic, assign) BOOL isWaitingForStopCompletion;
 @property (nonatomic, strong) dispatch_queue_t serialQueue;
+@property (nonatomic, strong) Reachability *reachability;
 
 - (BOOL)createAndQueueNextTaskWorker;
 - (void)scheduleMoreWork;
@@ -543,8 +545,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
 }
 
 #pragma mark - Test createAndAddTaskWorker
-#warning fix
-/*
+
 - (void)testCreateAndQueueNextTaskWorkerNoMoreWork
 {
     ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
@@ -552,8 +553,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     id workItemDatabaseMock = OCMStrictClassMock([ZLWorkItemDatabase class]);
     [[[workItemDatabaseMock expect] andReturn:nil] getNextWorkItemForTaskTypes:[OCMArg any]];
     
-
-    id mockReachability = [OCMockObject partialMockForObject:[[ADNetworkManager sharedInstance] reachabilityManager]];
+    id mockReachability = [OCMockObject partialMockForObject:taskManager.reachability];
     [[[mockReachability stub] andReturnValue:OCMOCK_VALUE(YES)] isReachable];
     
     
@@ -574,7 +574,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     
     ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
     
-    id mockReachability = [OCMockObject partialMockForObject:[[ADNetworkManager sharedInstance] reachabilityManager]];
+    id mockReachability = [OCMockObject partialMockForObject:taskManager.reachability];
     [[[mockReachability stub] andReturnValue:OCMOCK_VALUE(YES)] isReachable];
     
     ZLTaskWorker *taskWorker = [ZLTaskWorker new];
@@ -599,12 +599,12 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
 - (void)testCreateAndQueueNextTaskWorkerWasPausedNotCompleted
 {
     NSString *testTaskType = @"testTaskType";
-    ADWorkItem *workItem = [self createRandomTestWorkItem];
+    ZLInternalWorkItem *workItem = [self createRandomTestWorkItem];
     workItem.taskType = testTaskType;
     
     ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
     
-    id mockReachability = [OCMockObject partialMockForObject:[[ADNetworkManager sharedInstance] reachabilityManager]];
+    id mockReachability = [OCMockObject partialMockForObject:taskManager.reachability];
     [[[mockReachability stub] andReturnValue:OCMOCK_VALUE(YES)] isReachable];
     
     ZLTaskWorker *taskWorker = [ZLTaskWorker new];
@@ -634,7 +634,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     id workItemDatabaseMock = OCMStrictClassMock([ZLWorkItemDatabase class]);
     [[[workItemDatabaseMock expect] andReturn:nil] getNextWorkItemForTaskTypes:[taskManager.managersForTypeDictionary allKeys]];
     
-    id mockReachability = [OCMockObject partialMockForObject:[[ADNetworkManager sharedInstance] reachabilityManager]];
+    id mockReachability = [OCMockObject partialMockForObject:taskManager.reachability];
     [[[mockReachability stub] andReturnValue:OCMOCK_VALUE(YES)] isReachable];
     
     BOOL workAdded = [taskManager createAndQueueNextTaskWorker];
@@ -650,10 +650,10 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
 {
     ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
     NSString *testTaskType = @"testTaskType";
-    ADWorkItem *workItem = [self createRandomTestWorkItem];
+    ZLInternalWorkItem *workItem = [self createRandomTestWorkItem];
     workItem.taskType = testTaskType;
     
-    id mockReachability = [OCMockObject partialMockForObject:[[ADNetworkManager sharedInstance] reachabilityManager]];
+    id mockReachability = [OCMockObject partialMockForObject:taskManager.reachability];
     [[[mockReachability stub] andReturnValue:OCMOCK_VALUE(YES)] isReachable];
     
     ZLTaskWorker *taskWorker = [ZLTaskWorker new];
@@ -677,7 +677,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     
     
     XCTAssertTrue(workAdded, @"There was work in the WorkItemDatabase so this should have returned true");
-    XCTAssertEqual(workItem.state, ADWorkItemStateExecuting, @"After this operation the WorkItem.state should equal ADWorkItemStateExecuting not %i", (int)workItem.state);
+    XCTAssertEqual(workItem.state, ZLWorkItemStateExecuting, @"After this operation the WorkItem.state should equal ADWorkItemStateExecuting not %i", (int)workItem.state);
     
     [mockWorker verify];
     [mockReachability stopMocking];
@@ -691,12 +691,12 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
 - (void)testCreateAndQueueNextTaskWorkerWorkIsAvailableNoInternet
 {
     NSString *testTaskType = @"testTaskType";
-    ADWorkItem *workItem = [self createRandomTestWorkItem];
+    ZLInternalWorkItem *workItem = [self createRandomTestWorkItem];
     workItem.taskType = testTaskType;
     
     ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
     
-    id mockReachability = [OCMockObject partialMockForObject:[[ADNetworkManager sharedInstance] reachabilityManager]];
+    id mockReachability = [OCMockObject partialMockForObject:taskManager.reachability];
     [[[mockReachability stub] andReturnValue:OCMOCK_VALUE(NO)] isReachable];
     
     ZLTaskWorker *taskWorker = [ZLTaskWorker new];
@@ -717,7 +717,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     
     
     XCTAssertTrue(workAdded, @"There was work in the WorkItemDatabase so this should have returned true");
-    XCTAssertEqual(workItem.state, ADWorkItemStateExecuting, @"After this operation the WorkItem.state should equal ADWorkItemStateExecuting not %i", (int)workItem.state);
+    XCTAssertEqual(workItem.state, ZLWorkItemStateExecuting, @"After this operation the WorkItem.state should equal ADWorkItemStateExecuting not %i", (int)workItem.state);
     
     [mockReachability stopMocking];
     [mockQueue verify];
@@ -726,7 +726,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     OCMVerifyAll(workItemDatabaseMock);
     [workItemDatabaseMock stopMocking];
 }
-*/
+
 #pragma mark - Test Dump State
 
 - (void)testDumpState
