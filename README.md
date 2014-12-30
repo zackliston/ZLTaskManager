@@ -45,3 +45,32 @@ This is how you create and queue work:<br>
     [[ZLTaskManager sharedInstance] queueTask:task];
 ```
 
+###Executing Work
+All work is done inside your subclasses of `ZLTaskWorker`. To understand how to implement your `TaskWorker` visit [this page]().<br>
+<br>
+Your `TaskWorker` is created by your subclass of `ZLManager` that is registered for that task type. You **must** override the `taskWorkerForWorkItem:` method in your `Manager` class. Example below:
+
+``` objective-c
+- (ZLTaskWorker *)taskWorkerForWorkItem:(ZLInternalWorkItem *)workItem
+{
+    //This should be defined as a constant somewhere
+    NSString *taskType = @"test.task.type";
+    
+    ZLTaskWorker *taskWorker;
+    
+    if ([workItem.taskType isEqualToString:taskType]) {
+        taskWorker = [ZLTaskWorkerSubclass new];
+    } else if ([workItem.taskType isEqualToString:@"otherTaskTypeManagerHandles]) {
+        taskWorker = [ZLOtherTaskWorkerSubclass new];
+    } else 
+        // If your Manager is registered for a task type you MUST handle it. This line of code should never execute
+        // if you are implementing this correctly. It is recommended to log here in case this happens so you 
+        // know what's going wrong.
+        NSLog(@"Manager is not handling task type %@", workItem.taskType);
+    }
+    
+    // Required
+    [taskWorker setupWithWorkItem:workItem];
+    return taskWorker;
+}
+```
