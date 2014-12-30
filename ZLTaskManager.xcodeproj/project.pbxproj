@@ -70,7 +70,7 @@
 /* Begin PBXFileReference section */
 		136A32241A534E290013FFAA /* ZLTaskManager.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZLTaskManager.podspec; sourceTree = "<group>"; };
 		136A32261A53525D0013FFAA /* ZLTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZLTaskManager.h; path = Classes/ZLTaskManager.h; sourceTree = "<group>"; };
-		136A32271A5352780013FFAA /* ZLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLManager.h; sourceTree = "<group>"; };
+		136A32271A5352780013FFAA /* ZLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ZLManager.h; path = Classes/ZLManager.h; sourceTree = "<group>"; };
 		13D8B3F51A4A188400E28CBC /* libZLTaskManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZLTaskManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D8B3FA1A4A188400E28CBC /* ZLTaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ZLTaskManager.m; path = Classes/ZLTaskManager.m; sourceTree = "<group>"; };
 		13D8B4001A4A188400E28CBC /* ZLTaskManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZLTaskManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
