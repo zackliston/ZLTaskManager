@@ -5,10 +5,10 @@ There are many ways to dispatch work with Objective-C, from [Grand Central Dispa
 
 ###Usage
 There are four main classes in ZLTaskManager
-1: `ZLTaskManager` - Responsible for queueing, stopping, cancelling, restarting etc all work. 
-2: `ZLTask` - How we specify and queue work on the `TaskManager`
-3: `ZLTaskWorker` - Where the actual work is done. You must provide the custom implementation of your work in a subclass of this. 
-3: `ZLManager` - Responsible for `TaskWorkers`. The `TaskManager` will ask subclasses of this to create `TaskWorkers` based on the task type it is registered for. 
+1: `ZLTaskManager` - Responsible for queueing, stopping, cancelling, restarting etc all work. <br>
+2: `ZLTask` - How we specify and queue work on the `TaskManager`<br>
+3: `ZLTaskWorker` - Where the actual work is done. You must provide the custom implementation of your work in a subclass of this. <br>
+3: `ZLManager` - Responsible for `TaskWorkers`. The `TaskManager` will ask subclasses of this to create `TaskWorkers` based on the task type it is registered for. <br>
 
 ###Initializing 
 `ZLTaskManager` is a shared instance and is initialized at the first call. It is recommended to initialize the `TaskManager` and register all available `ZLManager` subclasses on app launch, for example: 
