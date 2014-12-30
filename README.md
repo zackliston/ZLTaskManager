@@ -46,7 +46,7 @@ This is how you create and queue work:<br>
 ```
 
 ###Executing Work
-All work is done inside your subclasses of `ZLTaskWorker`. To understand how to implement your `TaskWorker` visit [this page]().<br>
+All work is done inside your subclasses of `ZLTaskWorker`. To understand how to implement your `TaskWorker` visit [this page](https://github.com/zackliston/ZLTaskManager/wiki/ZLTaskWorker).<br>
 <br>
 Your `TaskWorker` is created by your subclass of `ZLManager` that is registered for that task type. You **must** override the `taskWorkerForWorkItem:` method in your `Manager` class. Example below:
 
