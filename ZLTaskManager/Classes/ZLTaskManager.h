@@ -39,6 +39,11 @@
 - (void)registerManager:(ZLManager *)manager forTaskType:(NSString *)taskType;
 - (void)removeRegisteredManagerForAllTaskTypes:(ZLManager *)manager;
 
+#pragma mark - Backgrounding
+// This method will block indefinitely! It should only be called on a low priority background thread and is used to know
+// when the taskManager is done
++ (void)waitForTasksToFinishOnSharedInstance;
+
 #pragma mark - Debug Methods
 - (NSDictionary *)dumpState;
 @end

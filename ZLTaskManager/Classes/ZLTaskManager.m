@@ -281,6 +281,17 @@ static dispatch_once_t onceToken;
         self.managersForTypeDictionary = [mutableManagers copy];
     });
 }
+                  
+#pragma mark - Backgrounding
+
++ (void)waitForTasksToFinishOnSharedInstance
+{
+    NSInteger count =[[ZLTaskManager sharedInstance] countOfTasksNotHolding];
+    while (count > 0) {
+        [NSThread sleepForTimeInterval:5.0];
+        count = [[ZLTaskManager sharedInstance] countOfTasksNotHolding];
+    }
+}
 
 #pragma mark Get State
 
