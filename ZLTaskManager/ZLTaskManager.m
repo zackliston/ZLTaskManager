@@ -53,6 +53,8 @@ static dispatch_once_t onceToken;
     self = [super init];
     if (self) {
         [ZLWorkItemDatabase restartExecutingTasks];
+        [ZLWorkItemDatabase restartHoldingTasks];
+        
         self.serialQueue = dispatch_queue_create("com.agilemd.sdk.taskManager.serialQueue", NULL);
         self.activeTaskQueue = [[NSOperationQueue alloc] init];
         self.activeTaskQueue.name = kZLActiveTaskQueueName;
@@ -118,14 +120,16 @@ static dispatch_once_t onceToken;
 
 #pragma mark Running
 
-- (void)stopWithCompletionHandler:(void (^)(void))completionBlock
+- (void)stopWithNetworkCancellationBlock:(void (^)(void))networkCancellationBlock completionHandler:(void (^)(void))completionBlock
 {
     dispatch_sync(self.serialQueue, ^{
         self.isRunning = NO;
         self.isWaitingForStopCompletion = YES;
         [self.activeTaskQueue cancelAllOperations];
-#warning fix
-        //[[ADNetworkManager sharedInstance] cancelAllTasks];
+
+        if (networkCancellationBlock) {
+            networkCancellationBlock();
+        }
         
         __block ZLTaskManager *weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -140,14 +144,16 @@ static dispatch_once_t onceToken;
     });
 }
 
-- (void)stopAndWait
+- (void)stopAndWaitWithNetworkCancellationBlock:(void (^)(void))networkCancellationBlock
 {
     self.isRunning = NO;
     self.isWaitingForStopCompletion = YES;
     dispatch_sync(self.serialQueue, ^{
         [self.activeTaskQueue cancelAllOperations];
-#warning fix
-       // [[ADNetworkManager sharedInstance] cancelAllTasks];
+
+        if (networkCancellationBlock) {
+            networkCancellationBlock();
+        }
         
         [self.activeTaskQueue waitUntilAllOperationsAreFinished];
         self.isWaitingForStopCompletion = NO;

@@ -70,6 +70,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
 {
     id mockWorkDB = [OCMockObject mockForClass:[ZLWorkItemDatabase class]];
     [[mockWorkDB expect] restartExecutingTasks];
+    [[mockWorkDB expect] restartHoldingTasks];
     
     ZLTaskManager *taskManager = [ZLTaskManager sharedInstance];
     
@@ -107,6 +108,7 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     [[mockActiveTaskQueue expect] cancelAllOperations];
     
     XCTestExpectation *completionBlockExpectation = [self expectationWithDescription:@"The stop completion block shoud have been called"];
+    XCTestExpectation *networkCancellationExpectation = [self expectationWithDescription:@"Network CancellationBlock"];
     
     for (int i=0; i<10; i++) {
         ZLTestConcurrnetTaskWorker *waitTaskWorker = [[ZLTestConcurrnetTaskWorker alloc] initWithConcurrentWaitTime:1.5];
@@ -114,7 +116,9 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     }
     
     
-    [taskManager stopWithCompletionHandler:^{
+    [taskManager stopWithNetworkCancellationBlock:^{
+        [networkCancellationExpectation fulfill];
+    } completionHandler:^{
         [completionBlockExpectation fulfill];
         XCTAssertEqual(taskManager.activeTaskQueue.operationCount, 0, @"The completion block shouldn't be called until all the operations have finished");
         XCTAssertFalse(taskManager.isWaitingForStopCompletion, @"Is waitingForStopCompletion should be set to false after the completionHandler is called");
@@ -139,18 +143,24 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     [[mockActiveTaskQueue expect] cancelAllOperations];
     [[mockActiveTaskQueue expect] waitUntilAllOperationsAreFinished];
     
-    [manager stopAndWait];
+     XCTestExpectation *networkCancellationExpectation = [self expectationWithDescription:@"Network CancellationBlock"];
+    
+    [manager stopAndWaitWithNetworkCancellationBlock:^{
+        [networkCancellationExpectation fulfill];
+    }];
     
     XCTAssertFalse(manager.isWaitingForStopCompletion, @"Is waitingForStopCompletion should be set to false after the completionHandler is called");
     XCTAssertFalse(manager.isRunning, @"After we call stop the isRunning flag should be set to false");
     
     [mockActiveTaskQueue verify];
+    
+    [self waitForExpectationsWithTimeout:1.0 handler:nil];
 }
 
 - (void)testResume
 {
     ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
-    [taskManager stopWithCompletionHandler:nil];
+    [taskManager stopWithNetworkCancellationBlock:nil completionHandler:nil];
     
     [taskManager resume];
     XCTAssertTrue(taskManager.isRunning, @"After we call resume the isRunning flag should be set to true");

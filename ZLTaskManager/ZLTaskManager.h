@@ -20,8 +20,8 @@
 + (ZLTaskManager *)sharedInstance;
 
 #pragma mark - Running
-- (void)stopWithCompletionHandler:(void (^)(void))completionBlock;
-- (void)stopAndWait;
+- (void)stopWithNetworkCancellationBlock:(void (^)(void))networkCancellationBlock completionHandler:(void (^)(void))completionBlock;
+- (void)stopAndWaitWithNetworkCancellationBlock:(void (^)(void))networkCancellationBlock;
 - (void)resume;
 
 #pragma mark - Task Queueing
