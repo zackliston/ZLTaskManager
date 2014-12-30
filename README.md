@@ -13,7 +13,7 @@ There are four main classes in ZLTaskManager<br>
 ###Initializing 
 `ZLTaskManager` is a shared instance and is initialized at the first call. It is recommended to initialize the `TaskManager` and register all available `ZLManager` subclasses on app launch, for example: 
 
-```
+```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
     ZLManagerSubclass *yourManager = [ZLManagerSubclass new];
@@ -72,5 +72,75 @@ Your `TaskWorker` is created by your subclass of `ZLManager` that is registered 
     // Required
     [taskWorker setupWithWorkItem:workItem];
     return taskWorker;
+}
+```
+
+###Stopping and backgrounding
+In order to keep the iOS from killing our processes while they're running when the application is about to terminate (plus your own app specific needs), we must stop our work. There are two ways to do this, asynchonously or synchronously. Please review [this page]() for more details. You must implement the below code in your `applicationWillTerminate` method in your app delegate:<br>
+
+```objective-c
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    // This is a synchronous method. 
+    [[ZLTaskManager sharedInstance] stopAndWaitWithNetworkCancellationBlock:^{
+        // Cancel any network tasks your task workers may be using so that the cancellation process
+        // is not waiting on them to finish. 
+    }];
+}
+```
+
+####Backgrounding disabled
+If you decide to not enable backgrounding then you must stop your work everytime your app enters the background and resume it everytime it enters the for ground, as showed below:<br>
+
+```objective-c
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    // This is a synchronous method. 
+    [[ZLTaskManager sharedInstance] stopAndWaitWithNetworkCancellationBlock:^{
+        // Cancel any network tasks your task workers may be using so that the cancellation process
+        // is not waiting on them to finish. 
+    }];
+}
+```
+
+```objective-c
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    [ZLTaskManager sharedInstance] resume];
+}
+```
+
+####Backgrounding enabled
+If you decide to enable backgrounding for `ZLTaskManager` in your application then you must start a background task everytime your app enters the background and make sure it starts up again everytime your application becomes active: 
+```objective-c
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)]) {
+        if ([[UIDevice currentDevice] isMultitaskingSupported]) {
+            __block UIBackgroundTaskIdentifier backgroundTask;
+            backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
+                [[ADTaskManager sharedInstance] stopAndWait];
+               
+                NSLog(@"ZLTaskManager background tasks ran out of time. Stopping");
+                [application endBackgroundTask:backgroundTask];
+                backgroundTask = UIBackgroundTaskInvalid;
+            }];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+                //This is a blocking method. It shouldn't be called anywhere but in this context
+                [ZLTaskManager waitForTasksToFinishOnSharedInstance];
+                
+                NSLog(@"ZLTaskManager finished background tasks");
+                [application endBackgroundTask:backgroundTask];
+                backgroundTask = UIBackgroundTaskInvalid;
+            });
+        }
+    }
+}
+```
+```objective-c
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [ZLTaskManager sharedInstance] resume];
 }
 ```
