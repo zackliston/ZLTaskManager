@@ -60,7 +60,7 @@ Your `TaskWorker` is created by your subclass of `ZLManager` that is registered 
     
     if ([workItem.taskType isEqualToString:taskType]) {
         taskWorker = [ZLTaskWorkerSubclass new];
-    } else if ([workItem.taskType isEqualToString:@"otherTaskTypeManagerHandles]) {
+    } else if ([workItem.taskType isEqualToString:@"otherTaskTypeManagerHandles"]) {
         taskWorker = [ZLOtherTaskWorkerSubclass new];
     } else 
         // If your Manager is registered for a task type you MUST handle it. This line of code should never execute
