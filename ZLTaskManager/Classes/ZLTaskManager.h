@@ -13,7 +13,8 @@
 @class ZLInternalWorkItem;
 @class ZLManager;
 
-// In this header, you should import all the public headers of your framework using statements like #import <ZLTaskManager/PublicHeader.h>
+
+FOUNDATION_EXPORT NSInteger kZLMajorPriorityUserInitiated;
 
 @interface ZLTaskManager : NSObject <ZLTaskFinishedProtocol>
 
