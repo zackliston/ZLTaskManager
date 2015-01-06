@@ -11,7 +11,7 @@ CocoaPods is a dependency manager for Objective-C, which automates and simplifie
 Podfile
 ```
 platform :ios, '7.1'
-pod `ZLTaskManager`, "~> 0.0"
+pod 'ZLTaskManager', '~> 0.0'
 ```
 
 ##Usage
