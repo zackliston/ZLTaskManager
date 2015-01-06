@@ -24,7 +24,7 @@ static FMDatabaseQueue *_sharedQueue = nil;
 		NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
 		NSString *path = [[NSString alloc] initWithString:[cachesDirectory stringByAppendingPathComponent:kZLWorkItemDatabaseLocation]];
 		
-		_sharedQueue = [[FMDatabaseQueue alloc] initWithPath:path];
+		_sharedQueue = [[FMDatabaseQueue alloc] initWithPath:path flags:SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_FILEPROTECTION_NONE];
 		
 		[_sharedQueue inDatabase:^(FMDatabase *db) {
 			[db open];

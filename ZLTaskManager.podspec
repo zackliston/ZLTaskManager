@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZLTaskManager"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "An objective-c library for managing, persisting, and retrying work."
 
   s.description  = <<-DESC
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/zackliston/ZLTaskManager.git"}
+s.source       = { :git => "https://github.com/zackliston/ZLTaskManager.git", :tag => "0.0.2"}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -57,7 +57,11 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  s.dependency 'FMDB', '~> 2.4'
+s.dependencies = {
+    'FMDB' => '2.4',
+    'Reachability' => '3.2'
+}
+
 
 
 
