@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZLTaskManager"
-  s.version      = "0.0.2"
+  s.version      = "0.0.5"
   s.summary      = "An objective-c library for managing, persisting, and retrying work."
 
   s.description  = <<-DESC
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-    s.platform     = :ios, "7.1"
+    s.platform     = :ios, "7.0"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-s.source       = { :git => "https://github.com/zackliston/ZLTaskManager.git", :tag => "0.0.2"}
+s.source       = { :git => "https://github.com/zackliston/ZLTaskManager.git", :tag => "0.0.5"}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
