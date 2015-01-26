@@ -27,6 +27,7 @@ FOUNDATION_EXPORT NSInteger kZLMajorPriorityUserInitiated;
 
 #pragma mark - Task Queueing
 - (BOOL)queueTask:(ZLTask *)task;
+- (BOOL)queueTaskArray:(NSArray *)taskArray;
 
 #pragma mark - Task Methods
 - (void)removeTasksOfType:(NSString *)taskType;

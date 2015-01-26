@@ -353,6 +353,178 @@ NSTimeInterval const kScheduleWorkTimeIntervalTEST = 5.0;
     [workItemDatabaseMock stopMocking];
 }
 
+- (void)testQueueTaskArraySuccess
+{
+    ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
+    id mockTaskManager = [OCMockObject partialMockForObject:taskManager];
+    [[mockTaskManager expect] scheduleMoreWork];
+    
+    
+    id workItemDatabaseMock = OCMStrictClassMock([ZLWorkItemDatabase class]);
+    
+    NSDictionary *testDataDictionary = @{@"key1":@"value1", @"key2":@"value2", @"Key3":@"value3"};
+    NSError *error = nil;
+    NSData *testData = [NSJSONSerialization dataWithJSONObject:testDataDictionary options:NSJSONWritingPrettyPrinted error:&error];
+    if (error) {
+        NSLog(@"Error in testQueueTask serializing testDataDictionary to NSData %@", error);
+    }
+    
+    NSString *testTaskType = @"testTaskType123";
+    NSInteger testMajorPriority = arc4random()%5;
+    NSInteger testMinorPriority = arc4random()%5;
+    NSInteger testMaxRetryCOunt = arc4random_uniform(34);
+    
+    NSString *testTaskType2 = @"testTaskType12aa3";
+    NSInteger testMajorPriority2 = arc4random()%5;
+    NSInteger testMinorPriority2 = arc4random()%5;
+    NSInteger testMaxRetryCOunt2 = arc4random_uniform(34);
+    
+    BOOL testShouldRestart = YES;
+    
+    BOOL testRequiresInternet = YES;
+    double testTimeCreated = [[NSDate new] timeIntervalSince1970];
+    
+    ZLTask *task = [[ZLTask alloc] init];
+    task.taskType = testTaskType;
+    task.jsonData = testDataDictionary;
+    task.majorPriority = testMajorPriority;
+    task.minorPriority = testMinorPriority;
+    task.requiresInternet = testRequiresInternet;
+    task.maxNumberOfRetries = testMaxRetryCOunt;
+    task.shouldHoldAndRestartAfterMaxRetries = testShouldRestart;
+
+    
+    ZLTask *task2 = [[ZLTask alloc] init];
+    task2.taskType = testTaskType2;
+    task2.jsonData = testDataDictionary;
+    task2.majorPriority = testMajorPriority2;
+    task2.minorPriority = testMinorPriority2;
+    task2.requiresInternet = testRequiresInternet;
+    task2.maxNumberOfRetries = testMaxRetryCOunt2;
+    task2.shouldHoldAndRestartAfterMaxRetries = testShouldRestart;
+
+    [OCMExpect([workItemDatabaseMock addNewWorkItem:[OCMArg checkWithBlock:^BOOL(id obj) {
+        ZLInternalWorkItem *workItem = nil;
+        if ([obj isKindOfClass:[ZLInternalWorkItem class]]) {
+            workItem = (ZLInternalWorkItem *)obj;
+        } else {
+            return NO;
+        }
+        
+        XCTAssertEqual(testTaskType, workItem.taskType, @"The workItem.taskType %@ should equal the provided taskType %@", workItem.taskType, testTaskType);
+        XCTAssertEqual(testMajorPriority, workItem.majorPriority, @"The workItem.majorPriority %i should equal the provided majorPriority %i", (int)workItem.majorPriority, (int)testMajorPriority);
+        XCTAssertEqual(testMinorPriority, workItem.minorPriority, @"The workItem.minorPriority %i should equal the provided minorPriority %i", (int)workItem.minorPriority, (int)testMinorPriority);
+        XCTAssertTrue([testData isEqualToData:workItem.data], @"The workItem.data should equal the NSData equivalent of the provided dataDictionary");
+        XCTAssertEqual(ZLWorkItemStateReady, workItem.state, @"The initial state of a workItem should be ADWorkItemStateReady instead it is %i", (int)workItem.state);
+        XCTAssertEqual(0, workItem.retryCount, @"The initial retryCount of a workItem should be zero. It is %i", (int)workItem.retryCount);
+        XCTAssertEqual(testRequiresInternet, workItem.requiresInternet, @"The workItem.requiresInternet should equal the provided value of %i but it does not", (int)testRequiresInternet);
+        XCTAssertEqual(testMaxRetryCOunt, workItem.maxNumberOfRetries);
+        XCTAssertEqual(testShouldRestart, workItem.shouldHoldAfterMaxRetries);
+        // Since we know the timeCreated won't be exactly the same we just want to make sure it's the same to within a second
+        double difference = fabs(testTimeCreated-workItem.timeCreated);
+        
+        XCTAssertTrue(difference<1.0, @"The workItem.timeCreated %f should be approximately equal to the time when we called the method %f", workItem.timeCreated, testTimeCreated);
+        
+        return YES;
+    }]]) andReturnValue:OCMOCK_VALUE(YES)];
+    
+    [OCMExpect([workItemDatabaseMock addNewWorkItem:[OCMArg checkWithBlock:^BOOL(id obj) {
+        ZLInternalWorkItem *workItem = nil;
+        if ([obj isKindOfClass:[ZLInternalWorkItem class]]) {
+            workItem = (ZLInternalWorkItem *)obj;
+        } else {
+            return NO;
+        }
+        
+        XCTAssertEqual(testTaskType2, workItem.taskType, @"The workItem.taskType %@ should equal the provided taskType %@", workItem.taskType, testTaskType);
+        XCTAssertEqual(testMajorPriority2, workItem.majorPriority, @"The workItem.majorPriority %i should equal the provided majorPriority %i", (int)workItem.majorPriority, (int)testMajorPriority);
+        XCTAssertEqual(testMinorPriority2, workItem.minorPriority, @"The workItem.minorPriority %i should equal the provided minorPriority %i", (int)workItem.minorPriority, (int)testMinorPriority);
+        XCTAssertTrue([testData isEqualToData:workItem.data], @"The workItem.data should equal the NSData equivalent of the provided dataDictionary");
+        XCTAssertEqual(ZLWorkItemStateReady, workItem.state, @"The initial state of a workItem should be ADWorkItemStateReady instead it is %i", (int)workItem.state);
+        XCTAssertEqual(0, workItem.retryCount, @"The initial retryCount of a workItem should be zero. It is %i", (int)workItem.retryCount);
+        XCTAssertEqual(testRequiresInternet, workItem.requiresInternet, @"The workItem.requiresInternet should equal the provided value of %i but it does not", (int)testRequiresInternet);
+        XCTAssertEqual(testMaxRetryCOunt2, workItem.maxNumberOfRetries);
+        XCTAssertEqual(testShouldRestart, workItem.shouldHoldAfterMaxRetries);
+        // Since we know the timeCreated won't be exactly the same we just want to make sure it's the same to within a second
+        double difference = fabs(testTimeCreated-workItem.timeCreated);
+        
+        XCTAssertTrue(difference<1.0, @"The workItem.timeCreated %f should be approximately equal to the time when we called the method %f", workItem.timeCreated, testTimeCreated);
+        
+        return YES;
+    }]]) andReturnValue:OCMOCK_VALUE(YES)];
+    
+    
+    BOOL success = [taskManager queueTaskArray:@[task, task2]];
+    
+    XCTAssertTrue(success, @"This operation should return true when it is successful.");
+    
+    OCMVerifyAll(workItemDatabaseMock);
+    [mockTaskManager verify];
+    [workItemDatabaseMock stopMocking];
+}
+
+- (void)testQueueTaskArrayNoTaskType
+{
+    ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
+    id mockTaskManager = [OCMockObject partialMockForObject:taskManager];
+    [[mockTaskManager reject] scheduleMoreWork];
+    
+    id workItemDatabaseMock = OCMStrictClassMock([ZLWorkItemDatabase class]);
+    
+    NSDictionary *testDataDictionary = @{@"key1":@"value1", @"key2":@"value2", @"Key3":@"value3"};
+    
+    NSInteger testMajorPriority = arc4random()%5;
+    NSInteger testMinorPriority = arc4random()%5;
+    
+    ZLTask *task = [[ZLTask alloc] init];
+    task.jsonData = testDataDictionary;
+    task.taskType = nil;
+    task.majorPriority = testMajorPriority;
+    task.minorPriority = testMinorPriority;
+    
+    [[workItemDatabaseMock reject] addNewWorkItem:[OCMArg any]];
+    
+    
+    BOOL success = [taskManager queueTaskArray:@[task]];
+    
+    XCTAssertFalse(success);
+    [mockTaskManager verify];
+    OCMVerifyAll(workItemDatabaseMock);
+    [workItemDatabaseMock stopMocking];
+}
+
+- (void)testQueueTaskArrayFailure
+{
+    ZLTaskManager *taskManager = [[ZLTaskManager alloc] init];
+    id mockTaskManager = [OCMockObject partialMockForObject:taskManager];
+    [[mockTaskManager reject] scheduleMoreWork];
+    
+    id workItemDatabaseMock = OCMStrictClassMock([ZLWorkItemDatabase class]);
+    
+    NSDictionary *testDataDictionary = @{@"key1":@"value1", @"key2":@"value2", @"Key3":@"value3"};
+    
+    NSString *testTaskType = @"anotherType";
+    NSInteger testMajorPriority = arc4random()%5;
+    NSInteger testMinorPriority = arc4random()%5;
+    
+    ZLTask *task = [[ZLTask alloc] init];
+    task.jsonData = testDataDictionary;
+    task.taskType = testTaskType;
+    task.majorPriority = testMajorPriority;
+    task.minorPriority = testMinorPriority;
+    
+    [OCMExpect([workItemDatabaseMock addNewWorkItem:[OCMArg any]]) andReturnValue:OCMOCK_VALUE(NO)];
+    
+    
+    BOOL success = [taskManager queueTaskArray:@[task]];
+    
+    XCTAssertFalse(success, @"When the ZLWorkItemDatabase returns false this method must also return false indicating that it failed.");
+    [mockTaskManager verify];
+    OCMVerifyAll(workItemDatabaseMock);
+    [workItemDatabaseMock stopMocking];
+}
+
+
 #pragma mark - Test WorkItemDatabase manipulation
 
 - (void)testRemoveTasksOfType

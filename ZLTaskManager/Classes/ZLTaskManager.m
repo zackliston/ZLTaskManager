@@ -201,6 +201,45 @@ static dispatch_once_t onceToken;
     });
     return success;
 }
+                  
+- (BOOL)queueTaskArray:(NSArray *)taskArray
+{
+    if (self.isWaitingForStopCompletion || taskArray.count < 1) {
+        return NO;
+    }
+    
+    __block BOOL success = YES;
+    dispatch_sync(self.serialQueue, ^{
+        for (ZLTask *task in taskArray) {
+            if ((!task.taskType || task.taskType.length<1)) {
+                success = NO;
+                continue;
+            }
+            
+            ZLInternalWorkItem *newWorkItem = [[ZLInternalWorkItem alloc] init];
+            newWorkItem.taskType = task.taskType;
+            newWorkItem.majorPriority = task.majorPriority;
+            newWorkItem.minorPriority = task.minorPriority;
+            newWorkItem.jsonData = task.jsonData;
+            newWorkItem.state = ZLWorkItemStateReady;
+            newWorkItem.retryCount = 0;
+            newWorkItem.requiresInternet = task.requiresInternet;
+            newWorkItem.timeCreated = [[NSDate new] timeIntervalSince1970];
+            newWorkItem.maxNumberOfRetries = task.maxNumberOfRetries;
+            newWorkItem.shouldHoldAfterMaxRetries = task.shouldHoldAndRestartAfterMaxRetries;
+            
+            BOOL taskSuccess = [ZLWorkItemDatabase addNewWorkItem:newWorkItem];
+            if (!taskSuccess) {
+                success = taskSuccess;
+            }
+        }
+        
+        if (success) {
+            [self scheduleMoreWork];
+        }
+    });
+    return success;
+}
 
 #pragma mark Manipulate WorkItem Database
 
