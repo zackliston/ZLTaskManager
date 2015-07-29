@@ -36,7 +36,6 @@
 		13D8B4571A4A19AA00E28CBC /* TestInternalWorkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4521A4A19AA00E28CBC /* TestInternalWorkItem.m */; };
 		13D8B4581A4A19AA00E28CBC /* ZLTestWorkItemDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4531A4A19AA00E28CBC /* ZLTestWorkItemDatabase.m */; };
 		13D8B4591A4A19AA00E28CBC /* ZLTestTaskWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4541A4A19AA00E28CBC /* ZLTestTaskWorker.m */; };
-		13D8B45C1A4A1A0F00E28CBC /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D8B45A1A4A1A0700E28CBC /* libsqlite3.0.dylib */; };
 		13D8B4611A4A1E4800E28CBC /* ZLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4601A4A1E4800E28CBC /* ZLManager.m */; };
 		13D8B4621A4A1E4800E28CBC /* ZLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B4601A4A1E4800E28CBC /* ZLManager.m */; };
 		13D8B4631A4A212900E28CBC /* ZLTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D8B3FA1A4A188400E28CBC /* ZLTaskManager.m */; };
@@ -112,7 +111,6 @@
 		13D8B4521A4A19AA00E28CBC /* TestInternalWorkItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInternalWorkItem.m; sourceTree = "<group>"; };
 		13D8B4531A4A19AA00E28CBC /* ZLTestWorkItemDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTestWorkItemDatabase.m; sourceTree = "<group>"; };
 		13D8B4541A4A19AA00E28CBC /* ZLTestTaskWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTestTaskWorker.m; sourceTree = "<group>"; };
-		13D8B45A1A4A1A0700E28CBC /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		13D8B45D1A4A1A3100E28CBC /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		13D8B4601A4A1E4800E28CBC /* ZLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZLManager.m; path = Classes/ZLManager.m; sourceTree = "<group>"; };
 		13D8B4641A4A21C600E28CBC /* ZLTestManagerBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLTestManagerBaseClass.m; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13D8B45C1A4A1A0F00E28CBC /* libsqlite3.0.dylib in Frameworks */,
 				13D8B44B1A4A198900E28CBC /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,7 +140,6 @@
 		13D8B3EC1A4A188400E28CBC = {
 			isa = PBXGroup;
 			children = (
-				13D8B45A1A4A1A0700E28CBC /* libsqlite3.0.dylib */,
 				136A32241A534E290013FFAA /* ZLTaskManager.podspec */,
 				13D8B3F71A4A188400E28CBC /* ZLTaskManager */,
 				13D8B4041A4A188400E28CBC /* ZLTaskManagerTests */,
