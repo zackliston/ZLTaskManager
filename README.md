@@ -5,7 +5,7 @@ There are many ways to dispatch work with Objective-C, from [Grand Central Dispa
 
 ##Getting Starting
 ###Installation
-####Cocoapods
+####CocoaPods
 CocoaPods is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like AFNetworking in your projects. See the "Getting Started" guide for more information.
 
 Podfile
